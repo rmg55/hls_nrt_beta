@@ -116,7 +116,7 @@ def pred_cov(dat, ends_dict, dim):
 
     covArrays = []
     for idx, c in enumerate(end_classes):
-        covArrays.append(pred_unmix_xr(dat, dims=dims_list, ends=[end_vals], idx=idx, name=c).unstack('z').persist())
+        covArrays.append(pred_unmix_xr(dat, dims=dims_list, ends=[end_vals], idx=idx, name=c).unstack('z'))
 
     dat_cov = xr.concat(covArrays, dim='type', join='override', combine_attrs='drop')
     #dat_cov['type'] = [c for c in end_classes]
